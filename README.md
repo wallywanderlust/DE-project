@@ -1,70 +1,24 @@
-Weather Data Pipeline (ETL)
+# 🌦️ Weather Data ETL Pipeline
 
-📌 Project Overview
-This project is a functional Data Pipeline designed to automate the collection, transformation, and storage of weather data. It demonstrates the transition from Ad Hoc scripts to a Scheduled workflow using industry-standard tools.
+## Overview
+This project is a functional **ETL (Extract, Transform, Load)** pipeline. It automates the collection of weather data, processes it for consistency, and stores it in a local **Data Lake** for future analysis.
 
+## 🛠️ The Data Stack
+* **Extract**: Python `requests` library pulling from the Open-Meteo REST API.
+* **Transform**: Data cleaning and timestamping to ensure **Data Lineage**.
+* **Load**: Persistent storage in a CSV-based **Data Lake**.
+* **Modeling**: SQL Star Schema design for **Data Warehousing**.
 
+## 🚀 How to Run
+1. **Clone the repo**: `git clone https://github.com/wallywanderlust/DE-project.git`
+2. **Install dependencies**: `pip install requests`
+3. **Execute the pipeline**: `python scripts/fetch_weather.py`
+4. **View results**: Check `data/weather_log.csv`
 
-
-🏗️ Architecture
-The pipeline follows a standard ETL (Extract, Transform, Load) pattern:
-
-
-Extract: Fetches raw JSON data from an external API (Open-Meteo).
-
-
-
-Transform: Cleans the data, handles missing values (Data Enrichment), and converts units.
-
-
-
-Load: Stores the structured data into a Postgres database using ACID compliant transactions.
-
-
-
-🛠️ Tech Stack
-
-Language: Python (Bash for environment setup).
-
-
-Database: Postgres (Relational storage).
-
-
-
-Orchestration: Apache Airflow (Workflow management).
-
-
-
-Version Control: Git.
-
-
-📊 Data Model
-The project uses a Star Schema to optimize for analytical queries:
-
-
-
-Fact Table: weather_readings (stores hourly temperature, wind speed, etc.).
-
-
-Dimension Table: locations (stores city name, latitude, and longitude).
-
-
-🚀 Key Engineering Concepts Applied
-
-Idempotency: The pipeline is designed so that running the same task multiple times produces the same result, preventing duplicate data.
-
-
-Atomicity: Using ACID principles to ensure that if a data load fails, the database rolls back to its previous state.
-
-
-Data Lineage: Tracking the origin and movement of data from the API to the final Database.
-
-
-DRY Principle: Code is written following the Don't Repeat Yourself standard for better maintainability.
-
-🚦 How to Run
-
-Clone the Repo: git clone [your-repo-link].
+## 🧠 Key Learnings
+- Managing **API Responses** and handling HTTP status codes.
+- Resolving complex **Git merge conflicts** and branch rebasing.
+- Designing a **Star Schema** with Fact and Dimension tables to optimize query performance.
 
 Setup Environment: Create a virtual environment and install dependencies.
 
